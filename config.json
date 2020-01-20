@@ -18,7 +18,7 @@
                 "level": "DEBUG",
                 "formatter": "simple",
                 "filename": "app.log",
-                "mode": "a"
+                "mode": "w"
             }
         },
         "loggers": {

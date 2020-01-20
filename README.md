@@ -12,7 +12,7 @@ The repository contains the following:
 ## Sections
 
 1. [ ] Using Generators
-   1. [ ] Example 1: Reading Large Files
+   1. [x] Example 1: Reading Large Files
    2. [ ] Example 2: Generating an Infinite Sequence
    3. [ ] Example 3: Detecting Palindromes
 2. [ ] Understanding Generators
