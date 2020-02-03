@@ -11,10 +11,10 @@ The repository contains the following:
 
 ## Sections
 
-1. [ ] Using Generators
+1. [x] Using Generators
    1. [x] Example 1: Reading Large Files
-   2. [ ] Example 2: Generating an Infinite Sequence
-   3. [ ] Example 3: Detecting Palindromes
+   2. [x] Example 2: Generating an Infinite Sequence
+   3. [x] Example 3: Detecting Palindromes
 2. [ ] Understanding Generators
    1. [ ] Building Generators With Generator Expressions
    2. [ ] Profiling Generator Performance
