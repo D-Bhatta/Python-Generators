@@ -118,7 +118,7 @@ class Generators(object):
             nums_squared_gc = (i**2 for i in range(5))
             lg.info('type of nums_squared_lc:{}'.format(type(nums_squared_lc)))
             lg.info('type of nums_squared_gc:{}'.format(type(nums_squared_gc)))
-            return [type(nums_squared_lc), type(nums_squared_gc)]
+            return [str(type(nums_squared_lc)), str(type(nums_squared_gc))]
         types = building_generators_with_generator_expressions()
         def profiling_generator_performance():
             from sys import getsizeof
@@ -136,7 +136,7 @@ class Generators(object):
             run('sum((i**2 for i in range(10000)))','gc.profile')
             q = pstats.Stats('gc.profile')
             lg.info(('Number of function calls for gc'+'{}'.format(q.prim_calls)))
-            return [getsizeof(nums_squared_lc),getsizeof(nums_squared_gc),p,q]
+            return [getsizeof(nums_squared_lc),getsizeof(nums_squared_gc),p.prim_calls,q.prim_calls]
         stats = profiling_generator_performance()
         return [types, stats]
 gen = Generators()
