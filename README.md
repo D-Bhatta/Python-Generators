@@ -15,9 +15,9 @@ The repository contains the following:
    1. [x] Example 1: Reading Large Files
    2. [x] Example 2: Generating an Infinite Sequence
    3. [x] Example 3: Detecting Palindromes
-2. [ ] Understanding Generators
-   1. [ ] Building Generators With Generator Expressions
-   2. [ ] Profiling Generator Performance
+2. [x] Understanding Generators
+   1. [x] Building Generators With Generator Expressions
+   2. [x] Profiling Generator Performance
 3. [ ] Understanding the Python Yield Statement
 4. [ ] Using Advanced Generator Methods
    1. [ ] How to Use .send()

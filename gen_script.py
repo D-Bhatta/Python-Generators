@@ -112,5 +112,33 @@ class Generators(object):
             lg.info(pal_nums)
             return pal_nums
         return [reading_large_files(),generating_an_infinite_sequence(),generating_an_infinite_sequence2(),detecting_palindromes()]
+    def understanding_generators(self):
+        def building_generators_with_generator_expressions():
+            nums_squared_lc = [i**2 for i in range(5)]
+            nums_squared_gc = (i**2 for i in range(5))
+            lg.info('type of nums_squared_lc:{}'.format(type(nums_squared_lc)))
+            lg.info('type of nums_squared_gc:{}'.format(type(nums_squared_gc)))
+            return [type(nums_squared_lc), type(nums_squared_gc)]
+        types = building_generators_with_generator_expressions()
+        def profiling_generator_performance():
+            from sys import getsizeof
+            nums_squared_lc = [i**2 for i in range(10000)]
+            nums_squared_gc = (i**2 for i in range(10000))
+            # Add string info 
+            lg.info('size of lc:{}'.format(getsizeof(nums_squared_lc)))
+            lg.info('size of gc:{}'.format(getsizeof(nums_squared_gc)))
+            from cProfile import run
+            run('sum([i**2 for i in range(10000)])','lc.profile')
+            import pstats
+            p = pstats.Stats('lc.profile')
+            # print number of calls
+            lg.info(('Number of function calls for lc'+'{}'.format(p.prim_calls)))
+            run('sum((i**2 for i in range(10000)))','gc.profile')
+            q = pstats.Stats('gc.profile')
+            lg.info(('Number of function calls for gc'+'{}'.format(q.prim_calls)))
+            return [getsizeof(nums_squared_lc),getsizeof(nums_squared_gc),p,q]
+        stats = profiling_generator_performance()
+        return [types, stats]
 gen = Generators()
 gen.using_generators()
+gen.understanding_generators()
