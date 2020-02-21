@@ -132,13 +132,32 @@ class Generators(object):
             import pstats
             p = pstats.Stats('lc.profile')
             # print number of calls
-            lg.info(('Number of function calls for lc'+'{}'.format(p.prim_calls)))
+            lg.info(('Number of function calls for lc:'+' {}'.format(p.prim_calls)))
             run('sum((i**2 for i in range(10000)))','gc.profile')
             q = pstats.Stats('gc.profile')
-            lg.info(('Number of function calls for gc'+'{}'.format(q.prim_calls)))
+            lg.info(('Number of function calls for gc:'+' {}'.format(q.prim_calls)))
             return [getsizeof(nums_squared_lc),getsizeof(nums_squared_gc),p.prim_calls,q.prim_calls]
         stats = profiling_generator_performance()
         return [types, stats]
+    def understanding_yeild_statement(self):
+        """ On the whole, yield is a fairly simple statement. Its primary job is to control the flow of a generator function in a way that’s similar to return statements. As briefly mentioned above, though, the Python yield statement has a few tricks up its sleeve.When you call a generator function or use a generator expression, you return a special iterator called a generator. You can assign this generator to a variable in order to use it. When you call special methods on the generator, such as next(), the code within the function is executed up to yield.When the Python yield statement is hit, the program suspends function execution and returns the yielded value to the caller. (In contrast, return stops function execution completely.) When a function is suspended, the state of that function is saved. This includes any variable bindings local to the generator, the instruction pointer, the internal stack, and any exception handling.This allows you to resume function execution whenever you call one of the generator’s methods. In this way, all function evaluation picks back up right after yield. """
+        def multi_yield():
+            yield_str = "This is the first string"
+            yield yield_str
+            yield_str = "This is the second string"
+            yield yield_str
+        multi_obj = multi_yield()
+        strings = []
+        for i in range(10): # pylint: disable=unused-variable
+            try:
+                strings.append(next(multi_obj))
+            except StopIteration:
+                lg.error("Stop Iteration error: generator exhausted")
+                break
+        lg.info(strings)
+        return strings
+
 gen = Generators()
 gen.using_generators()
 gen.understanding_generators()
+gen.understanding_yeild_statement()

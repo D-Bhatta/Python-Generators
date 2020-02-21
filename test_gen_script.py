@@ -12,3 +12,6 @@ class TestObject(object):
         a = g.understanding_generators()
         b = [["<class 'list'>", "<class 'generator'>"], [87624, 120, 5, 10005]]
         assert a == b, "Output list doesn't match in understanding_generators()"
+    def test_understanding_yeild_statement(self):
+        strings = g.understanding_yeild_statement()
+        assert strings == ['This is the first string', 'This is the second string'], "Output list doesn't match in understanding_yeild_statement()"

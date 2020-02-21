@@ -18,7 +18,7 @@ The repository contains the following:
 2. [x] Understanding Generators
    1. [x] Building Generators With Generator Expressions
    2. [x] Profiling Generator Performance
-3. [ ] Understanding the Python Yield Statement
+3. [x] Understanding the Python Yield Statement
 4. [ ] Using Advanced Generator Methods
    1. [ ] How to Use .send()
    2. [ ] How to Use .throw()
