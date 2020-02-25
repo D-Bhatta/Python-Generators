@@ -156,8 +156,72 @@ class Generators(object):
                 break
         lg.info(strings)
         return strings
+    def adv_generator_methods(self):
+        """ Using send(), throw(), and close() """
+        pals = []
+        pals2 = []
+        pals3 = []
+        def is_palindrome(num):
+            if num // 10 == 0:
+                return False
+            temp = num
+            rev = 0
+            while temp!=0:
+                rev = (rev *10) + (temp % 10)
+                temp = temp // 10
+            if rev == num:
+                return True
+            else:
+                return False
+        def infinite_palindromes():
+            num = 0
+            while True:
+                if is_palindrome(num):
+                    i = (yield num)
+                    if i is not None:
+                        num = i
+                num = num + 1
+        def use_send():
+            pal_gen = infinite_palindromes()
+            for i in pal_gen:
+                pals.append(i)
+                if i == 10000100001:
+                    break
+                digits = len(str(i))
+                pal_gen.send(10**(digits))
+        def use_throw():
+            pal_gen = infinite_palindromes()
+            for i in pal_gen:
+                pals2.append(i)
+                digits = len(str(i))
+                if digits == 5:
+                    pal_gen.throw(ValueError("we don't like this large palindrome"))
+                pal_gen.send(10**(digits))
+        def use_close():
+            pal_gen = infinite_palindromes()
+            for i in pal_gen:
+                pals3.append(i)
+                digits = len(str(i))
+                if digits == 5:
+                    pal_gen.close()
+                pal_gen.send(10**(digits))
+        use_send()
+        lg.info(pals)
+        try:
+            use_throw()
+        except ValueError:
+            lg.error("ValueError exception thrown by generator")
+        lg.info(pals2)
+        try:
+            use_close()
+        except StopIteration:
+            lg.error("StopIteration exception thrown by generator")
+        lg.info(pals3)
+        return pals, pals2, pals3
+        
 
 gen = Generators()
 gen.using_generators()
 gen.understanding_generators()
 gen.understanding_yeild_statement()
+gen.adv_generator_methods()

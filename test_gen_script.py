@@ -15,3 +15,7 @@ class TestObject(object):
     def test_understanding_yeild_statement(self):
         strings = g.understanding_yeild_statement()
         assert strings == ['This is the first string', 'This is the second string'], "Output list doesn't match in understanding_yeild_statement()"
+    def test_adv_generator_methods(self):
+        pal = [11, 111, 1111, 10101, 101101, 1001001, 10011001, 100010001, 1000110001, 10000100001],[11, 111, 1111, 10101],[11, 111, 1111, 10101]
+        pals = g.adv_generator_methods()
+        assert pal == pals, "Output tuple doesn't match in adv_generator_methods()"

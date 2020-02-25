@@ -19,10 +19,10 @@ The repository contains the following:
    1. [x] Building Generators With Generator Expressions
    2. [x] Profiling Generator Performance
 3. [x] Understanding the Python Yield Statement
-4. [ ] Using Advanced Generator Methods
-   1. [ ] How to Use .send()
-   2. [ ] How to Use .throw()
-   3. [ ] How to Use .close()
+4. [x] Using Advanced Generator Methods
+   1. [x] How to Use .send()
+   2. [x] How to Use .throw()
+   3. [x] How to Use .close()
 5. [ ] Creating Data Pipelines With Generators
 6. [ ] Conclusion
 
