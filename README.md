@@ -23,7 +23,7 @@ The repository contains the following:
    1. [x] How to Use .send()
    2. [x] How to Use .throw()
    3. [x] How to Use .close()
-5. [ ] Creating Data Pipelines With Generators
+5. [x] Creating Data Pipelines With Generators
 6. [ ] Conclusion
 
 ## Technologies Used

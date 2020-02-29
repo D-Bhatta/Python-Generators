@@ -218,10 +218,57 @@ class Generators(object):
             lg.error("StopIteration exception thrown by generator")
         lg.info(pals3)
         return pals, pals2, pals3
-        
+    def data_pipelines(self):
+        filename = "techcrunch.csv"
+        # read every line in file
+        lines = (line for line in open(filename))
+        # split each line into a list of values
+        list_line = (s.rstrip().split(",") for s in lines )
+        # extract the column names
+        cols = next(list_line)
+        # create a dict of values from lists
+        company_dicts = (dict(zip(cols,data)) for data in list_line)
+        # Filter out irrelevant data
+        funding = (
+            int(company_dict["raisedAmt"])
+            for company_dict in company_dicts
+            if company_dict["round"]  == "a"
+        )
+        # calculate total and avg        
+        total_amt_raised = sum(funding)
+        result_sum = f"Total series A fundraising : ${total_amt_raised}"
+        lg.info(result_sum)
+        # avg raised per company
+        """ Find out number of companies  
+        \nDivide total_amt_raised by number of companies"""
+        def dict_gen():
+            # read every line in file
+            lines = (line for line in open(filename))
+            # split each line into a list of values
+            list_line = (s.rstrip().split(",") for s in lines )
+            # extract the column names
+            cols = next(list_line)
+            # create a dict of values from lists
+            company_dicts = (dict(zip(cols,data)) for data in list_line)
+            return company_dicts
+        company_dicts = dict_gen()
+
+        num_comps = len(set((
+            str(company_dict["company"])
+            for company_dict in company_dicts
+            if company_dict["round"]  == "a"
+        )))
+        avg = total_amt_raised//num_comps
+        result_avg = f"Average amount raised by company = {avg}"
+        lg.info("Number of companies:"+str(num_comps))
+        lg.info(result_avg)
+        return total_amt_raised, num_comps, avg
+
+
 
 gen = Generators()
 gen.using_generators()
 gen.understanding_generators()
 gen.understanding_yeild_statement()
 gen.adv_generator_methods()
+gen.data_pipelines()

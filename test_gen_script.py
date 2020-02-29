@@ -19,3 +19,7 @@ class TestObject(object):
         pal = [11, 111, 1111, 10101, 101101, 1001001, 10011001, 100010001, 1000110001, 10000100001],[11, 111, 1111, 10101],[11, 111, 1111, 10101]
         pals = g.adv_generator_methods()
         assert pal == pals, "Output tuple doesn't match in adv_generator_methods()"
+    def test_data_pipelines(self):
+        amt,num,avg = 4376015000,563,7772673
+        tot,num_comps,average = g.data_pipelines()
+        assert (amt,num,avg == tot,num_comps,average), "TEST FAILED: Output tuple doesn't match in data_pipelines()"
