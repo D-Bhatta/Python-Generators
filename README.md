@@ -24,7 +24,7 @@ The repository contains the following:
    2. [x] How to Use .throw()
    3. [x] How to Use .close()
 5. [x] Creating Data Pipelines With Generators
-6. [ ] Conclusion
+6. [x] Conclusion
 
 ## Technologies Used
 

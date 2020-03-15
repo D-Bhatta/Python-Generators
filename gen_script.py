@@ -1,7 +1,7 @@
+import csv
 import logging
 import logging.config
 from json import load as jload
-import csv
 
 """ Configure logger lg with config for appLogger from config.json["logging"] """
 with open('config.json', 'r') as f:
