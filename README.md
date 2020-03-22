@@ -31,6 +31,15 @@ The repository contains the following:
 - Python Programming Language
   - Generators
   - Logging
+  - YAML configuration
+  - CProfile
+  - CSV
+
+## Applied Dataset
+
+### TechCrunch Dataset
+
+A listing of company funding rounds as reported by TechCrunch
 
 ## What I Have Learned
 
